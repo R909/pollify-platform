@@ -11,7 +11,7 @@ services:
       POSTGRES_PASSWORD: pollify123
       POSTGRES_DB: pollify
     ports:
-      - "5434:5432"
+      - "5438:5432"
     volumes:
       - pollify_pgdata:/var/lib/postgresql/data
 
