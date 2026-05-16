@@ -1,8 +1,8 @@
 import { Router, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
-import { pool } from '../db';
-import { authenticate, AuthRequest } from '../middleware/auth';
-import { CreatePollSchema } from '../schemas';
+import { pool } from '../db/index.js';
+import { authenticate, AuthRequest } from '../middleware/auth.js';
+import { CreatePollSchema } from '../schemas/index.js';
 import { Server as SocketServer } from 'socket.io';
 
 export function pollRouter(io: SocketServer) {
