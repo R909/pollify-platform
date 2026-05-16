@@ -39,11 +39,12 @@ export const authApi = {
 export const pollsApi = {
   create: (data: any) => api.post('/polls', data),
   myPolls: () => api.get('/polls/my'),
-  getByToken: (token: string) => api.get(`/polls/share/${token}`),
+  getByToken: (token: string) => api.get(`/poll/${token}`),
   submitResponse: (token: string, data: any) => api.post(`/polls/share/${token}/respond`, data),
   analytics: (id: string) =>api.get(`/polls/${id}/analytics`),
   publish: (id: string) => api.post(`/polls/${id}/publish`),
   close: (id: string) => api.post(`/polls/${id}/close`),
   delete: (id: string) => api.delete(`/polls/${id}`),
-
+  get: (id: string) => api.get(`/polls/${id}`),
+  
 };
