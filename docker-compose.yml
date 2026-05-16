@@ -1,0 +1,37 @@
+version: '3.8'
+
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: pollify_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: pollify
+      POSTGRES_PASSWORD: pollify123
+      POSTGRES_DB: pollify
+    ports:
+      - "5434:5432"
+    volumes:
+      - pollify_pgdata:/var/lib/postgresql/data
+
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: pollify_backend
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      PORT: 4000
+      DATABASE_URL: postgresql://pollify:pollify123@postgres:5432/pollify
+      JWT_SECRET: pollify_super_secret_jwt_key_2024
+      CLIENT_URL: http://localhost:5173
+    ports:
+      - "4000:4000"
+
+
+volumes:
+  pollify_pgdata:
