@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './contexts/AuthContext';
 import Navbar from './components/Navbar';
@@ -14,6 +14,13 @@ import PublicPoll from './pages/PublicPoll';
 import PublishResults from './pages/PublishResults';
 
 function Layout({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+  const isPublicPollPage = location.pathname.startsWith('/poll/');
+
+  if (isPublicPollPage) {
+    return <>{children}</>;
+  }
+
   return (
     <>
       <Navbar />
