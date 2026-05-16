@@ -3,9 +3,9 @@ import http from 'http';
 import { Server as SocketServer } from 'socket.io';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { initDB } from './db';
-import authRouter from './routes/auth';
-import { pollRouter } from './routes/polls';
+import { initDB } from './db/index.js';
+import authRouter from './routes/auth.js';
+import { pollRouter } from './routes/polls.js';
 import { OAuth2Client } from 'google-auth-library';
 
 

@@ -1,8 +1,8 @@
 import { Router, Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { pool } from '../db';
-import { RegisterSchema, LoginSchema } from '../schemas';
+import { pool } from '../db/index.js';
+import { RegisterSchema, LoginSchema } from '../schemas/index.js';
 import { OAuth2Client } from 'google-auth-library';
 import crypto from 'crypto';
 
